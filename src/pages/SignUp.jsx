@@ -1,5 +1,6 @@
 import {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify'
 import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
 import {db} from '../firebase.congif' 
 import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg'
@@ -48,7 +49,7 @@ function SignUp() {
       navigate('/')
 
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong with registration')
     }
   }
 
@@ -68,7 +69,7 @@ function SignUp() {
               <input type="email" className="emailInput" placeholder='Email' id='email' value={email} onChange={onChange}/>
 
               <div className="passwordInputDiv">
-                <input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Password' id={password} onChange={onChange} />
+                <input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Password' id='password' onChange={onChange} />
 
                 <img src={visibilityIcon} alt="show Password" className="showPassword" onClick={() => setShowPassword((prevState) => !prevState)} />
               </div>

@@ -33,7 +33,7 @@ function Profile() {
         
         const userRef = doc(db, 'users', auth.currentUser.uid)
         await updateDoc(userRef, {
-        name
+          name
         })
       }
     } catch (error) {

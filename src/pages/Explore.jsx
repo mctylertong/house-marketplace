@@ -15,11 +15,11 @@ function Explore() {
 
           <p className="exploreCategoryHeading">Categories</p>
           <div className="exploreCategories">
-            <Link to='/categories/rent'>
+            <Link to='/category/rent'>
               <img src={rentCategoryImage} alt="rent" className='exploreCategoryImg' />
               <p className="exploreCategoryName">Places for rent</p>
             </Link>
-            <Link to='/categories/sale'>
+            <Link to='/category/sale'>
               <img src={sellCategoryImage} alt="sell" className='exploreCategoryImg' />
               <p className="exploreCategoryName">Places for sale</p>
             </Link>

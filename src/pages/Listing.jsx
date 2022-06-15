@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {Link, useNavigate, useParams} from 'react-router-dom'
-import { MapContaine, MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import SwiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css'
@@ -9,6 +9,8 @@ import {getAuth} from 'firebase/auth'
 import {db} from '../firebase.congif'
 import Spinner from '../components/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 function Listing() {
     const [listing, setListing] = useState(null)
@@ -48,6 +50,7 @@ function Listing() {
                             background: `url(${listing.imgUrls[index]}) 
                             center no-repeat`,
                             backgroundSize: 'cover',
+                            minHeight: '20rem',
                         }}
                         className='swiperSlideDiv'
                         ></div>

@@ -2,11 +2,11 @@ import {useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {collection, getDocs, query, orderBy, limit} from 'firebase/firestore'
 import {db} from '../firebase.congif'
-import SwiperCore, {Navigation, Pagination, Scrollbar, A11y} from 'swiper'
+import {Navigation, Pagination, Scrollbar, A11y} from 'swiper'
 import {Swiper, SwiperSlide} from 'swiper/react'
-import 'swiper/css'
+import 'swiper/css/bundle'
 import Spinner from './Spinner'
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+
 
 
 function Slider() {
@@ -42,13 +42,23 @@ function Slider() {
         return <Spinner />
     }
 
+    if(listings.length === 0) {
+        return <></>
+    }
+
   return listings && (
     <>
         <p className="exploreHeading">
             Recommended
         </p>
 
-        <Swiper slidesPerView={1} pagination={{clickable: true}}>
+        <Swiper
+          slidesPerView={1}
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          pagination={true}
+          navigation
+          scrollbar={{ dragable: true }}
+        >
             {listings.map(({data, id}) => (
                 <SwiperSlide key={id} onClick={() => navigate(`/category/${data.type}/${id}`)}>
                     <div style={{
